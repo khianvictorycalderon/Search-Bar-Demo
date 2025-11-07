@@ -45,7 +45,7 @@ var caseSensitivityInput = document.getElementById("case-sensitive-input");
 var wholeWordOnlyInput = document.getElementById("whole-word-only-input");
 var tableOutput = document.getElementById("table-output");
 
-// ================================= ACTUAL FUNCTIONS =======================
+// ================================= ACTUAL FUNCTIONS =================================
 
 const tableHeaders = `
   <tr>
@@ -75,10 +75,58 @@ function renderSelectChoices() {
   selectInput.innerHTML = `${Object.keys(users[0]).map(item => `<option>${item}</option>`)}`
 }
 
-searchInput.addEventListener("input", () => {
-  // Trigger re-render filter if any of the inputs was changed, text was changed, box was checked, select different fields, etc...
-});
+// ================================= EVENT LISTENERS =================================
+searchInput.addEventListener("input", handleSearch);
+selectInput.addEventListener("change", handleSearch);
+caseSensitivityInput.addEventListener("change", handleSearch);
+wholeWordOnlyInput.addEventListener("change", handleSearch);
 
-// Initial Calls
+function handleSearch() {
+  const keyword = searchInput.value.trim();
+  const selectedField = selectInput.value;
+  const isCaseSensitive = caseSensitivityInput.checked;
+  const isWholeWord = wholeWordOnlyInput.checked;
+
+  if (!keyword) return renderTableNoFilter();
+
+  const filteredUsers = users.filter(user => {
+    const fieldsToSearch =
+      selectedField === "Default..." ? Object.keys(user) : [selectedField];
+
+    return fieldsToSearch.some(field => {
+      let value = String(user[field]);
+      let search = keyword;
+
+      if (!isCaseSensitive) {
+        value = value.toLowerCase();
+        search = search.toLowerCase();
+      }
+
+      if (isWholeWord) {
+        const pattern = new RegExp(`\\b${search}\\b`);
+        return pattern.test(value);
+      }
+
+      return value.includes(search);
+    });
+  });
+
+  tableOutput.innerHTML = `
+    ${tableHeaders}
+    ${filteredUsers
+      .map(
+        item => `
+        <tr>
+          <td>${item.id}</td>
+          <td>${item.name}</td>
+          <td>${item.address}</td>
+          <td>${item.birth_date}</td>
+        </tr>`
+      )
+      .join("")}
+  `;
+}
+
+// ================================= INITIAL CALLS =================================
 renderTableNoFilter();
 renderSelectChoices();
