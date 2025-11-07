@@ -56,7 +56,7 @@ const tableHeaders = `
   </tr>
 `;
 
-function initialTableRender() { // No filter yet, just display everything
+function renderTableNoFilter() { // No filter yet, just display everything
   tableOutput.innerHTML = `
     ${tableHeaders}
     ${users.map(item => (`
@@ -76,9 +76,9 @@ function renderSelectChoices() {
 }
 
 searchInput.addEventListener("input", () => {
-  // Only trigger re-search if input was changed
+  // Trigger re-render filter if any of the inputs was changed, text was changed, box was checked, select different fields, etc...
 });
 
 // Initial Calls
-initialTableRender();
+renderTableNoFilter();
 renderSelectChoices();
