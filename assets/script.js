@@ -72,7 +72,7 @@ function renderTableNoFilter() { // No filter yet, just display everything
 
 function renderSelectChoices() {
   // Only the keys of the first record
-  selectInput.innerHTML = `${Object.keys(users[0]).map(item => `<option>${item}</option>`)}`
+  selectInput.innerHTML = `${Object.keys(users[0]).map(item => `<option>${item}</option>`).join("")}`
 }
 
 // ================================= EVENT LISTENERS =================================
