@@ -56,6 +56,24 @@ const tableHeaders = `
   </tr>
 `;
 
+function initialTableRender() { // No filter yet, just display everything
+  tableOutput.innerHTML = `
+    ${tableHeaders}
+    ${users.map(item => (`
+      <tr>
+        <td>${item.id}</td>
+        <td>${item.name}</td>
+        <td>${item.address}</td>
+        <td>${item.birth_date}</td>
+      </tr>
+    `)).join("")}
+  `;
+}
+
 searchInput.addEventListener("input", () => {
   // Only trigger re-search if input was changed
+  tableOutput.innerHTML = `${tableHeaders}`;
 });
+
+// Initial Calls
+initialTableRender();
