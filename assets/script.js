@@ -1,3 +1,4 @@
-function handleGetStarted() {
-  alert("You can now code with vanilla web + tailwind!");
-}
+var searchInput = document.getElementById("text-input");
+var selectInput = document.getElementById("select-input");
+var caseSensitivityInput = document.getElementById("case-sensitive-input");
+var wholeWordOnlyInput = document.getElementById("whole-word-only-input");
