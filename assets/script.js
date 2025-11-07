@@ -1,8 +1,3 @@
-var searchInput = document.getElementById("search-input");
-var selectInput = document.getElementById("select-input");
-var caseSensitivityInput = document.getElementById("case-sensitive-input");
-var wholeWordOnlyInput = document.getElementById("whole-word-only-input");
-
 // Mock data
 const users = [
   { id: 1, name: "John Doe", address: "X Street", birth_date: "Nov 4, 2001" },
@@ -41,6 +36,14 @@ const users = [
   { id: 34, name: "Grace Edwards", address: "Pearl Avenue", birth_date: "Jul 10, 2001" },
   { id: 35, name: "Matthew Collins", address: "Hillcrest Drive", birth_date: "Dec 1, 1999" }
 ];
+
+// ================================= INPUTS AND OUTPUTS =======================
+
+var searchInput = document.getElementById("search-input");
+var selectInput = document.getElementById("select-input");
+var caseSensitivityInput = document.getElementById("case-sensitive-input");
+var wholeWordOnlyInput = document.getElementById("whole-word-only-input");
+var tableOutput = document.getElementById("table-output");
 
 // ================================= ACTUAL FUNCTIONS =======================
 
