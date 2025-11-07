@@ -8,5 +8,37 @@
   </head>
   <body class="bg-neutral-900 p-4 text-white">
     <h2 class="text-4xl text-center font-bold">Search Bar Demo</h2>
+
+    <div class="flex flex-col md:flex-row items-center justify-center gap-4 mt-8">
+    <label for="text-input" class="text-gray-300 font-medium">Search for:</label>
+    <input
+      id="text-input"
+      type="text"
+      placeholder="Enter keyword..."
+      class="bg-neutral-800 text-white placeholder-gray-400 p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+    />
+
+    <span class="text-gray-400 hidden md:inline">in</span>
+
+    <select
+      id="select-input"
+      class="bg-neutral-800 text-white p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+    >
+      <option>Default...</option>
+    </select>
+
+    <div class="flex items-center gap-2">
+      <input id="case-sensitive-input" type="checkbox" class="h-4 w-4 accent-indigo-500" />
+      <label for="case-sensitive-input" class="text-gray-300">Case-Sensitive</label>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <input id="whole-word-only-input" type="checkbox" class="h-4 w-4 accent-indigo-500" />
+      <label for="whole-word-only-input" class="text-gray-300">Whole Word Only</label>
+    </div>
+  </div>
+
+
+
   </body>
 </html>
